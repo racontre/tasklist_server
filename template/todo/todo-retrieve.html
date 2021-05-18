@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<p class="text-center">
+  {% if request.user.is_authenticated %}
+	Welcome back
+  {% else %}
+    Welcome, anonymous
+  {% endif %}
+  </p>
+    <div class="col-4 offset-3">
+  <a class="btn btn-secondary" href = "/"> Home </a>
+	<div class="card mt-3">
+		<div class="card-header">
+			<li>  <h4><a href = "/{{todo.id}}"> {{ todo.name }} </a> </h4>  </li>
+		</div>
+		<div class="card-body">
+			<p> due {{ todo.due_date }} </p>
+		</div>
+	</div>
+	<div class="card-footer">
+	<a class="btn btn-primary" href = "update"> Update </a>
+	<a class="btn btn-secondary" href = "delete"> Delete </a>
+	</div>
+	</div>
+{% endblock  %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %} 
+  <h4>Update this task.</h4>
+  <!--<script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script>-->
+  <!--<script src="js/app.js"></script> -->
+  {% if request.user.is_authenticated %}
+	Welcome back
+  {% else %}
+    Welcome, anonymous
+  {% endif %}
+   <a class="btn btn-secondary" href = "/"> Home </a>
+  <form method="POST">
+	{% csrf_token %}
+		{{ form.as_p }}
+	<button type='submit'> Submit </button>
+  </form>
+{% endblock  %}

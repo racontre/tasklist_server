@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex align-items-center ">
+    <div class="d-inline-block row px-3">
+		<p class="text-center">
+			{% if request.user.is_authenticated %}
+				Welcome back
+			{% else %}
+				Welcome, anonymous
+			{% endif %}
+		</p>
+	</div>
+	<div class="d-inline-block row px-3">
+		<a class="btn btn-primary" href = "{% url 'todo_create' %}"> Create a task </a>
+	</div>
+ </div>
+  <div class="col-4 offset-3">
+  
+	{% for todo in todolist %}
+	<div class="card mt-3">
+		<div class="card-header">
+			<li>  <h4><a href = "/{{todo.id}}"> {{ todo.name }} </a> </h4>  </li>
+		</div>
+		<div class="card-body">
+			<p> due {{ todo.due_date }} </p>
+		</div>
+	</div>
+	{% endfor %}
+  
+  </div>
+{% endblock  %}
